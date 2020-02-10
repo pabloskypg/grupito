@@ -1,4 +1,6 @@
 <?php require_once "bbdd/bbdd.php"; ?>
+<?php $pagina = "insertarUsuario";
+	  $titulo = "Registrar usuario"; ?>
 <?php require_once "inc/funciones.php"; ?>
 <?php require_once "inc/encabezado.php"; ?>
 
@@ -40,13 +42,13 @@ function imprimirFormulario($nombre,$apellidos,$email,$direccion,$telefono){
 }
 
 if (empty($_POST)){
-	$nombre = ""        ;
-	$apellidos = ""     ;
-	$email = ""         ;
-	$password = ""      ;
-	$direccion = ""     ;
-	$telefono = ""      ;
-	$errores = ""       ;
+	$nombre = "";
+	$apellidos = "";
+	$email = "";
+	$password = "";
+	$direccion = "";
+	$telefono = "";
+	$errores = "";
 	imprimirFormulario($nombre,$apellidos,$email,$direccion,$telefono);
 }else{
 	$nombre = recoge("nombre");
@@ -81,9 +83,9 @@ if (empty($_POST)){
 		imprimirFormulario($nombre,$apellidos,$email,$direccion,$telefono);
 	}else{
 		insertarUsuario($nombre,$apellidos,$email,$password,$direccion,$telefono);
+		$_SESSION["usuario"]=$nombre;
 		header("Location:index.php");
 	}
 }
-
 ?>
 <?php require_once "inc/pie.php"; ?>

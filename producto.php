@@ -1,7 +1,5 @@
-<?php require_once("inc/encabezado.php"); ?>
 <?php require_once("bbdd/bbdd.php"); ?>
 <?php require_once("inc/funciones.php"); ?>
-
 <?php
 $idProducto = recoge("idProducto"); //Recojo el id de la url
 $producto = seleccionarProducto($idProducto);
@@ -13,6 +11,10 @@ $imagen = $producto["imagen"];
 $precio = $producto["precio"];
 $precioOferta = $producto["precioOferta"];
 ?>
+<?php $pagina = "productos";
+	  $titulo = $nombre; ?>
+<?php require_once("inc/encabezado.php"); ?>
+
 
 <main role="main">
 
@@ -39,8 +41,8 @@ $precioOferta = $producto["precioOferta"];
 			<img src="imagenes/<?php echo $imagen; ?>" alt="<?php echo $nombre; ?>" class="card-img-top rounded"/>
 			
 			<div class="row mt-2 mx-auto">
-				<span class="btn-danger col-6 text-center display-4">Antes <del><?php echo $producto["precio"]; ?> €</del></span>
-				<span class="btn-success col-6 text-center display-4">Ahora <?php echo $producto["precioOferta"]; ?> €</span>
+				<span class="text-danger col-6 text-center display-4">Antes <del><?php echo $producto["precio"]; ?> €</del></span>
+				<span class="text-success col-6 text-center display-4">Ahora <?php echo $producto["precioOferta"]; ?> €</span>
 			</div>
 		</div>
 	</div>

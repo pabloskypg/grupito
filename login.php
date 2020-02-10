@@ -1,5 +1,7 @@
 <?php session_start(); ?>
 <?php require_once "bbdd/bbdd.php"; ?>
+<?php $pagina = "login";
+	  $titulo = "Login"; ?>
 <?php require_once "inc/funciones.php"; ?>
 <?php require_once "inc/encabezado.php"; ?>
 
@@ -46,8 +48,7 @@ if (empty($_POST)){
 	}else{
 		$usuario = seleccionarUsuario($nombre);
 		$password = password_hash($password,PASSWORD_DEFAULT);
-		echo $usuario['password']."<br/>".$password;
-		if ($password == $usuario['password']){
+		if (password_verify($password,$usuario['password'])){
 			$_SESSION["nombre"] = $nombre;
 			header("Location:index.php");
 		}else{
@@ -59,3 +60,4 @@ if (empty($_POST)){
 
 
 ?>
+<?php require_once("inc/pie.php"); ?>

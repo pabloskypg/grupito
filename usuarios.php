@@ -1,4 +1,6 @@
 <?php require_once "bbdd/bbdd.php"; ?>
+<?php $pagina = "usuarios";
+	  $titulo = "Usuarios"; ?>
 <?php require_once "inc/encabezado.php"; ?>
 <?php require_once "inc/funciones.php"; ?>
 

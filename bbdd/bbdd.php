@@ -126,7 +126,7 @@ function borrarProducto($idProducto){
 //-------------------------------------------------------------------------------------------------------------
 
 // Funcion crearUsuario
-function insertarUsuario($nombre,$password){
+function insertarUsuario($nombre,$apellidos,$email,$password,$direccion,$telefono){
 	
 	$con = conectarBD();
 	
