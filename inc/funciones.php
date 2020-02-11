@@ -39,3 +39,18 @@ foreach ($productos as $producto){
 <?php
 } //Funcion mostrarProductos
 ?>
+
+<?php
+//Funcion mostrarMensaje($mensaje);
+function mostrarMensaje($mensaje){
+?>
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3"><?php echo $mensaje; ?></h1>
+      <p><a class="btn btn-primary btn-lg" href="productos.php" role="button">Volver</a></p>
+    </div>
+  </div>
+  
+<?php
+} 
+?>

@@ -47,9 +47,8 @@ if (empty($_POST)){
 		imprimirFormulario();
 	}else{
 		$usuario = seleccionarUsuario($nombre);
-		$password = password_hash($password,PASSWORD_DEFAULT);
 		if (password_verify($password,$usuario['password'])){
-			$_SESSION["nombre"] = $nombre;
+			$_SESSION["usuario"] = $nombre;
 			header("Location:index.php");
 		}else{
 			echo "El usuario o la contraseña son incorrectos";

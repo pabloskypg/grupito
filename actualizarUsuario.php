@@ -44,13 +44,13 @@ function imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$tel
     <h1 class="mt-5">Actualizar usuario</h1>
 <?php
 if (!isset($_REQUEST['guardar'])){
-	$idUsuario = recoge("idUsuario");
+	$idUsuario = recoge("nombre");
 	if ($idUsuario == ""){
 		header("Location:usuarios.php");
 		exit(); //die();
 	}
-	$usuario = seleccionarUsuario($idUsuario);
-	if (empty($idUsuario)){
+	$usuario = seleccionarUsuario($nombre);
+	if (empty($nombre)){
 		header("Location:index.php");
 		exit();
 	}
@@ -66,6 +66,25 @@ if (!isset($_REQUEST['guardar'])){
 	$passwordNew = recoge("passNew");
 	$passwordConf = recoge("passConf");
 	password_hash($passwordOld,PASSWORD_DEFAULT);
+	
+	if ($nombre == ""){
+		$errores = $errores."<li>Introduce tu nombre</li>";
+	}
+	if ($apellidos == ""){
+		$errores = $errores."<li>Introduce tus apellidos</li>";
+	}
+	if ($email == ""){
+		$errores = $errores."<li>Introduce tu email</li>";
+	}
+	if ($password == ""){
+		$errores = $errores."<li>Introduce la contraseña</li>";
+	}
+	if ($direccion == ""){
+		$errores = $errores."<li>Introduce tu dirección</li>";
+	}
+	if ($telefono == ""){
+		$errores = $errores."<li>Introduce un numero de telefono</li>";
+	}
 	
 	$errores = "";
 	if ($passwordOld != $usuario['password']){

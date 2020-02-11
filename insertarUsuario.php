@@ -36,6 +36,7 @@ function imprimirFormulario($nombre,$apellidos,$email,$direccion,$telefono){
 	</div>
 	<p>
 	<button type="submit" class="btn btn-primary btn-lg btn-block" value="guardar">Crear</button>
+	<a href="login.php" class="btn btn-secondary btn-lg btn-block">Volver</a>
 	</p>
 </form>
 <?php
