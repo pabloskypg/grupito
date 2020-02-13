@@ -209,16 +209,16 @@ function borrarUsuario($idUsuario){
 
 
 // Funcion seleccionarUsuario
-function seleccionarUsuario($nombre){
+function seleccionarUsuario($email){
 	
 	$con = conectarBD();
 	
 	try{
-		$sql = "SELECT * FROM usuarios WHERE nombre=:nombre";
+		$sql = "SELECT * FROM usuarios WHERE email=:email";
 		
 		$stmt = $con->prepare($sql);
 		
-		$stmt->bindParam(':nombre',$nombre);
+		$stmt->bindParam(':email',$email);
 		
 		$stmt->execute();
 		

@@ -44,6 +44,18 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="./css/jumbotron.css" rel="stylesheet">
+	<?php if ($pagina=="insertarUsuario"){ ?>
+		<script src='https://www.google.com/recaptcha/api.js?render=<?php echo CLAVE_SITIO_WEB; ?>'> 
+		</script>
+		<script>
+		grecaptcha.ready(function() {
+		grecaptcha.execute(<?php echo CLAVE_SITIO_WEB; ?>, {action: 'formulario'})
+		.then(function(token) {
+		var recaptchaResponse = document.getElementById('recaptchaResponse');
+		recaptchaResponse.value = token;
+		});});
+		</script>
+	<?php } ?>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -77,7 +89,7 @@
 			<div class="dropdown-menu" aria-labelledby="dropdown01">
 			  <a class="dropdown-item" href="misDatos.php">Mis datos</a>
 			  <a class="dropdown-item" href="misPedidos.php">Mis pedidos</a>
-			  <a class="dropdown-item" href="logout.php?usuario=<?php echo $_SESSION["usuario"]; ?>">Cerrar sesión</a>
+			  <a class="dropdown-item" href="logout.php">Cerrar sesión</a>
 			</div>
 		  </li>
 		  <?php }else{ ?>

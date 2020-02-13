@@ -12,8 +12,8 @@ function imprimirFormulario(){
 <main role="main" class="container">
 	<h2 class="mt-5">Inicio de sesión</h2> 
 	<div class="form-group">
-		<label for="nombre">Nombre</label>
-		<input type="text" class="form-control" id="nombre" name="nombre"/>
+		<label for="nombre">Email</label>
+		<input type="email" class="form-control" id="email" name="email"/>
 	</div>
 	<div class="form-group">
 		<label for="pass">Contraseña</label>
@@ -30,29 +30,28 @@ function imprimirFormulario(){
 if (empty($_POST)){
 	imprimirFormulario();
 }else{
-	$nombre = recoge("nombre");
+	$email = recoge("email");
 	$password = recoge("pass");
 	
 	$errores = "";
 	
-	if ($nombre == ""){
-		$errores = $errores."<li>Introduce el nombre de usuario</li>";
+	if ($email == ""){
+		$errores = $errores."<li>Introduce tu email</li>";
 	}
 	if ($password == ""){
-		$errores = $errores."<li>Introduce la contraseña</li>";
+		$errores = $errores."<li>Introduce tu contraseña</li>";
 	}
-	
 	if ($errores != ""){
 		echo "<ul>$errores</ul>";
 		imprimirFormulario();
 	}else{
-		$usuario = seleccionarUsuario($nombre);
+		$usuario = seleccionarUsuario($email);
 		if (password_verify($password,$usuario['password'])){
-			$_SESSION["usuario"] = $nombre;
+			$_SESSION["usuario"] = $usuario["nombre"];
 			header("Location:index.php");
 		}else{
 			echo "El usuario o la contraseña son incorrectos";
-			imprimirFormulario($nombre);
+			imprimirFormulario($email);
 		}
 	}
 }

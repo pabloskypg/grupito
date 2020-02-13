@@ -16,7 +16,6 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Tu carrito</h1>
-      <p><a class="btn btn-primary btn-lg" href="productos.php" role="button">Seguir comprando</a></p>
     </div>
   </div>
 
