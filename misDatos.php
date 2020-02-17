@@ -6,7 +6,7 @@
 <?php require_once "inc/encabezado.php"; ?>
 
 <?php 
-$email = $_SESS
+$email = $_SESSION["email"];
 $usuario = $seleccionarUsuario($email)
 
 
