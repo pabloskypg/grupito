@@ -291,7 +291,7 @@ function insertarPedido($idUsuario, $detallePedido, $total){
 	
 	try{
 		$con -> beginTransaction();
-		$sql = "INSERT INTO pedidos(idUsuario, total) VALUES(:idUsuario, :total);"
+		$sql = "INSERT INTO pedidos(idUsuario, total) VALUES(:idUsuario, :total)";
 		
 		$stmt = $con->prepare($sql);
 		
@@ -318,7 +318,7 @@ function insertarPedido($idUsuario, $detallePedido, $total){
 			$stmt->execute();
 		}
 		
-		$conexion -> commit();
+		$con -> commit();
 				
 	}catch(PDOException $e){
 		$con -> rollback();
@@ -329,5 +329,77 @@ function insertarPedido($idUsuario, $detallePedido, $total){
 		exit;
 	}
 	return $idPedido;
+}
+
+// Funcion seleccionarTodosPedidos
+function seleccionarTodosPedidos(){
+	
+	$con = conectarBD();
+	
+	try{
+		$sql = "SELECT * FROM pedidos";
+		
+		$stmt = $con->query($sql);
+		
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+	}catch(PDOException $e){
+		echo "Error: Error seleccionar todos los pedidos ".$e->getMessage();
+		
+		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+		exit;
+	}
+	return $rows;
+}
+
+//Funcion seleccionarPedidos
+function seleccionarPedidos($inicio,$pedidosPagina){
+		
+	$con = conectarBD();
+	
+	try{
+		$sql = "SELECT * FROM usuarios LIMIT :inicio,:pedidosPagina";
+		
+		$stmt = $con->prepare($sql);
+		
+		$stmt->bindParam(":inicio",$inicio, PDO::PARAM_INT);// sacar un valor entero => PDO::PARAM_INT
+		$stmt->bindParam(":pedidosPagina",$pedidosPagina, PDO::PARAM_INT);
+		
+		$stmt->execute();
+		
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+	}catch(PDOException $e){
+		echo "Error: Error seleccionar los pedidos".$e->getMessage();
+		
+		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+		exit;
+	}
+	return $rows;
+}
+
+// Funcion seleccionarPedidosUsuario
+function seleccionarTodosPedidosUsuario($idUsuario){
+	
+	$con = conectarBD();
+	
+	try{
+		$sql = "SELECT * FROM pedidos WHERE idUsuario=:idUsuario";
+		
+		$stmt = $con->prepare($sql);
+		
+		$stmt->bindParam(":idUsuario",$idUsuario, PDO::PARAM_INT);
+		
+		$stmt->execute();
+		
+		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		
+	}catch(PDOException $e){
+		echo "Error: Error seleccionar todos los pedidos ".$e->getMessage();
+		
+		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+		exit;
+	}
+	return $rows;
 }
 ?>

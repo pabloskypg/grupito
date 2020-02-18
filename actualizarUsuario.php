@@ -1,4 +1,6 @@
 <?php require_once "bbdd/bbdd.php"; ?>
+<?php $pagina = "actualizar";
+	  $titulo = "Actualizar usuario"; ?>
 <?php require_once "inc/funciones.php"; ?>
 <?php require_once "inc/encabezado.php"; ?>
 
@@ -23,8 +25,16 @@ function imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$tel
 		<input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>"/>
 	</div>
 	<div class="form-group">
-		<label for="pass">Contraseña</label>
-		<input type="password" class="form-control" id="pass" name="pass"/>
+		<label for="pass">Contraseña antigua</label>
+		<input type="password" class="form-control" id="passold" name="passold"/>
+	</div>
+	<div class="form-group">
+		<label for="pass">Nueva contraseña</label>
+		<input type="password" class="form-control" id="passnew" name="passnew"/>
+	</div>
+	<div class="form-group">
+		<label for="pass">Confirmar contraseña</label>
+		<input type="password" class="form-control" id="passconf" name="passconf"/>
 	</div>
 	<div class="form-group">
 		<label for="pass">Dirección</label>
@@ -44,13 +54,13 @@ function imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$tel
     <h1 class="mt-5">Actualizar usuario</h1>
 <?php
 if (!isset($_REQUEST['guardar'])){
-	$idUsuario = recoge("nombre");
+	$idUsuario = recoge("idUsuario");
 	if ($idUsuario == ""){
 		header("Location:usuarios.php");
 		exit(); //die();
 	}
-	$usuario = seleccionarUsuario($nombre);
-	if (empty($nombre)){
+	$usuario = seleccionarUsuario($idUsuario);
+	if (empty($idUsuario)){
 		header("Location:index.php");
 		exit();
 	}
@@ -62,9 +72,9 @@ if (!isset($_REQUEST['guardar'])){
 	$telefono = $usuario['telefono'];
 	imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$telefono);
 }else{
-	$passwordOld = recoge("passOld");
-	$passwordNew = recoge("passNew");
-	$passwordConf = recoge("passConf");
+	$passwordOld = recoge("passold");
+	$passwordNew = recoge("passnew");
+	$passwordConf = recoge("passconf");
 	password_hash($passwordOld,PASSWORD_DEFAULT);
 	
 	if ($nombre == ""){

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require_once("bbdd/bbdd.php"); ?>
 <?php $pagina = "contacto";
 	  $titulo = "Contacta con nosotros"; ?>

@@ -11,3 +11,6 @@
 6 February, 2020, 2:07 pm SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'apellidos' cannot be null
 10 February, 2020, 10:48 am SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'apellidos' cannot be null
 10 February, 2020, 10:49 am SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'apellidos' cannot be null
+18 February, 2020, 5:41 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL' at line 1
+18 February, 2020, 5:42 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL' at line 1
+18 February, 2020, 5:42 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL' at line 1

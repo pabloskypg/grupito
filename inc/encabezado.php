@@ -75,9 +75,20 @@
 		  <li class="nav-item <?php if ($pagina=="contacto"){echo "active";} ?>">
 			<a class="nav-link" href="contacto.php">Contacto</a>
 		  </li>
+		  <?php if (isset($_SESSION["admin"])){ ?>
 		  <li class="nav-item <?php if ($pagina=="usuarios"){echo "active";} ?>">
 			<a class="nav-link" href="usuarios.php">Usuarios</a>
 		  </li>
+		  <?php
+		  }
+		  ?>
+		  <?php if (isset($_SESSION["admin"])){ ?>
+		  <li class="nav-item <?php if ($pagina=="pedidos"){echo "active";} ?>">
+			<a class="nav-link" href="pedidos.php">Pedidos</a>
+		  </li>
+		  <?php
+		  }
+		  ?>
 		</ul>
 		<ul class="navbar-nav justify-content-end">
 		  <li class="nav-item">

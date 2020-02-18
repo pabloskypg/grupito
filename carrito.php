@@ -16,6 +16,7 @@
   <div class="jumbotron">
     <div class="container">
       <h1 class="display-3">Tu carrito</h1>
+	  	<a class="btn btn-primary btn-lg" href="productos.php" role="button">Seguir comprando</a>
     </div>
   </div>
 
@@ -57,13 +58,12 @@
 	  <tfoot>
 		  <tr>
 			<th scope="row" colspan="3" class="text-right">Total</th>
-			<th scope="row"><?php echo $total; ?></th>
+			<th scope="row"><?php echo $total; ?> €</th>
 		  </tr>
 	  </tfoot>
 	</table>
 	<p><a class="btn btn-warning btn-lg" href="procesarCarrito.php?op=empty" role="button">Vaciar carrito</a>
-	<a class="btn btn-primary btn-lg" href="productos.php" role="button">Seguir comprando</a>
-	<a class="btn btn-success btn-lg" href="comfirmarPedido.php" role="button">Confirmar compra</a></p>
+	<a class="btn btn-success btn-lg" href="confirmarPedido.php?total=<?php echo $total; ?>" role="button">Confirmar compra</a></p>
 	</div>
 </div>
 	<?php 
