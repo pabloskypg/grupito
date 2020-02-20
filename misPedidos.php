@@ -29,9 +29,10 @@
 	<table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">ID pedido</th>
       <th scope="col">ID usuario</th>
       <th scope="col">Total</th>
+      <th scope="col">Fecha</th>
 	</tr>
   </thead>
   <tbody>
@@ -40,12 +41,14 @@
 		$idPedido = $pedido['idPedido'];
 		$idUsuario = $pedido['idUsuario'];
 		$total = $pedido['total'];
+		$fecha = $pedido['fecha'];
 
   ?>
     <tr>
       <th scope="row"><?php echo $idPedido; ?></th>
       <td><?php echo $idUsuario; ?></td>
       <td><?php echo $total; ?> €</td>
+      <td><?php echo $fecha; ?></td>
     </tr>
 	<?php
 	} //Fin foreach usuarios

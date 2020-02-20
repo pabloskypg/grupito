@@ -156,21 +156,18 @@ function insertarUsuario($nombre,$apellidos,$email,$password,$direccion,$telefon
 // password_verify($password,$password_encriptada);
 
 // Funcion actualizarUsuario
-function actualizarUsuario($nombre,$passwordNew,$passwordConf){
+function actualizarUsuario($idUsuario,$nombre,$apellidos,$direccion,$telefono){
 	
 	$con = conectarBD();
 	
 	try{
-		$sql = "UPDATE FROM usuarios SET nombre=:nombre,apellidos:=apellidos,email=:email,password=:password,email=:email,telefono=:telefono WHERE idUsuario=:idUsuario";
-		$password = password_hash($password,PASSWORD_DEFAULT);
+		$sql = "UPDATE usuarios SET nombre=:nombre,apellidos=:apellidos,direccion=:direccion,telefono=:telefono WHERE idUsuario=:idUsuario";
 		
 		$stmt = $con->prepare($sql);
 		
 		$stmt->bindParam(':idUsuario',$idUsuario);
 		$stmt->bindParam(':nombre',$nombre);
 		$stmt->bindParam(':apellidos',$apellidos);
-		$stmt->bindParam(':email',$email);
-		$stmt->bindParam(':password',$password);
 		$stmt->bindParam(':direccion',$direccion);
 		$stmt->bindParam(':telefono',$telefono);
 		
@@ -178,6 +175,30 @@ function actualizarUsuario($nombre,$passwordNew,$passwordConf){
 		
 	}catch(PDOException $e){
 		echo "Error: Error al actualizar el usuario ".$e->getMessage();
+		
+		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+		exit;
+	}
+}
+
+// Funcion actualizarPassword
+function actualizarPassword($idUsuario,$password){
+	
+	$con = conectarBD();
+	
+	try{
+		$sql = "UPDATE usuarios SET password=:password WHERE idUsuario=:idUsuario";
+		$password = password_hash($password,PASSWORD_DEFAULT);
+		
+		$stmt = $con->prepare($sql);
+		
+		$stmt->bindParam(':idUsuario',$idUsuario);
+		$stmt->bindParam(":password",$password);
+		
+		$stmt->execute();
+		
+	}catch(PDOException $e){
+		echo "Error: Error al actualizar la password ".$e->getMessage();
 		
 		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
 		exit;

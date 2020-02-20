@@ -7,8 +7,8 @@
 
 <?php 
 $email = $_SESSION["email"];
-$usuario = seleccionarUsuario($email)
-
+$usuario = seleccionarUsuario($email);
+$idUsuario = $usuario["idUsuario"];
 ?>
 <main role="main" class="container">
 	<h1 class="mt-5">Mis datos</h1><br/>
@@ -38,5 +38,9 @@ $usuario = seleccionarUsuario($email)
 		<td><?php echo $usuario["telefono"]; ?></td>
 		</tr>
 	</table>
+	<p>
+	<a href="actualizarUsuario.php?idUsuario=<?php echo $idUsuario; ?>" class="btn btn-primary">Actualizar datos</a>
+	<a href="actualizarPassword.php?idUsuario=<?php echo $idUsuario; ?>" class="btn btn-info">Cambiar contraseña</a>
+	</p>
 </main>
 <?php require_once "inc/pie.php"; ?>

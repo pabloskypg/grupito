@@ -1,5 +1,6 @@
+<?php session_start(); ?>
 <?php require_once "bbdd/bbdd.php"; ?>
-<?php $pagina = "actualizar";
+<?php $pagina = "actualizarUsuario";
 	  $titulo = "Actualizar usuario"; ?>
 <?php require_once "inc/funciones.php"; ?>
 <?php require_once "inc/encabezado.php"; ?>
@@ -13,28 +14,16 @@ function imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$tel
 		<input type="text" class="form-control" id="id" name="id" value="<?php echo $idUsuario; ?>" disabled />
 	</div>
 	<div class="form-group">
+		<label for="pass">Email</label>
+		<input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>" disabled />
+	</div>
+	<div class="form-group">
 		<label for="nombre">Nombre</label>
 		<input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre; ?>"/>
 	</div>
 	<div class="form-group">
 		<label for="pass">Apellidos</label>
 		<input type="text" class="form-control" id="apellidos" name="apellidos" value="<?php echo $apellidos; ?>"/>
-	</div>
-	<div class="form-group">
-		<label for="pass">Email</label>
-		<input type="email" class="form-control" id="email" name="email" value="<?php echo $email; ?>"/>
-	</div>
-	<div class="form-group">
-		<label for="pass">Contraseña antigua</label>
-		<input type="password" class="form-control" id="passold" name="passold"/>
-	</div>
-	<div class="form-group">
-		<label for="pass">Nueva contraseña</label>
-		<input type="password" class="form-control" id="passnew" name="passnew"/>
-	</div>
-	<div class="form-group">
-		<label for="pass">Confirmar contraseña</label>
-		<input type="password" class="form-control" id="passconf" name="passconf"/>
 	</div>
 	<div class="form-group">
 		<label for="pass">Dirección</label>
@@ -51,7 +40,7 @@ function imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$tel
 ?>
 
 <main role="main" class="container">
-    <h1 class="mt-5">Actualizar usuario</h1>
+    <h1 class="mt-5">Actualizar datos</h1>
 <?php
 if (!isset($_REQUEST['guardar'])){
 	$idUsuario = recoge("idUsuario");
@@ -59,7 +48,8 @@ if (!isset($_REQUEST['guardar'])){
 		header("Location:usuarios.php");
 		exit(); //die();
 	}
-	$usuario = seleccionarUsuario($idUsuario);
+	$email = $_SESSION["email"];
+	$usuario = seleccionarUsuario($email);
 	if (empty($idUsuario)){
 		header("Location:index.php");
 		exit();
@@ -72,22 +62,18 @@ if (!isset($_REQUEST['guardar'])){
 	$telefono = $usuario['telefono'];
 	imprimirFormulario($idUsuario,$nombre,$apellidos,$email,$direccion,$telefono);
 }else{
-	$passwordOld = recoge("passold");
-	$passwordNew = recoge("passnew");
-	$passwordConf = recoge("passconf");
-	password_hash($passwordOld,PASSWORD_DEFAULT);
+	$idUsuario = recoge("idUsuario");
+	$nombre = recoge("nombre");
+	$apellidos = recoge("apellidos");
+	$direccion = recoge("direccion");
+	$telefono = recoge("tlf");
 	
+	$errores = "";
 	if ($nombre == ""){
 		$errores = $errores."<li>Introduce tu nombre</li>";
 	}
 	if ($apellidos == ""){
 		$errores = $errores."<li>Introduce tus apellidos</li>";
-	}
-	if ($email == ""){
-		$errores = $errores."<li>Introduce tu email</li>";
-	}
-	if ($password == ""){
-		$errores = $errores."<li>Introduce la contraseña</li>";
 	}
 	if ($direccion == ""){
 		$errores = $errores."<li>Introduce tu dirección</li>";
@@ -96,18 +82,14 @@ if (!isset($_REQUEST['guardar'])){
 		$errores = $errores."<li>Introduce un numero de telefono</li>";
 	}
 	
-	$errores = "";
-	if ($passwordOld != $usuario['password']){
-		$errores = $errores."<li>La contraseña antigua no es correcta</li>";
-	}
-	if ($passwordNew != $passwordConf){
-		$errores = $errores."<li>Las contraseñas no coinciden</li>";
-	}
-	
 	if ($errores != ""){
 		echo "<ul>$errores</ul>";
 	}else{
-		actualizarUsuario($nombre,$apellidos,$email,$passwordNew,$direccion,$telefono);
+		actualizarUsuario($idUsuario,$nombre,$apellidos,$direccion,$telefono);
+		 ?>
+		<p><span class="form-control alert-success">Se han actualizado los datos correctamente</span></p>
+		<a class="btn btn-primary" href="misDatos.php">Volver</a>
+<?php
 	}
 }
 ?>

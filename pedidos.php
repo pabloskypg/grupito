@@ -30,6 +30,7 @@
       <th scope="col">ID</th>
       <th scope="col">ID usuario</th>
       <th scope="col">Total</th>
+      <th scope="col">Fecha</th>
       <th scope="col">Operaciones</th>
 	</tr>
   </thead>
@@ -39,13 +40,17 @@
 		$idPedido = $pedido['idPedido'];
 		$idUsuario = $pedido['idUsuario'];
 		$total = $pedido['total'];
+		$fecha = $pedido['fecha'];
 
   ?>
     <tr>
       <th scope="row"><?php echo $idPedido; ?></th>
       <td><?php echo $idUsuario; ?></td>
       <td><?php echo $total; ?></td>
-	  <td><a href="borrarPedido.php?idUsuario=<?php echo $idPedido; ?>" onClick="return confirmar('¿Realmente quieres borrar el pedido?');" class="btn btn-outline-danger">Borrar</a>
+      <td><?php echo $fecha; ?></td>
+	  <td>
+	  <a href="pedido.php?idPedido=<?php echo $idPedido; ?>" class="btn btn-outline-info">Ver Pedido</a>
+	  <a href="borrarPedido.php?idUsuario=<?php echo $idPedido; ?>" onClick="return confirmar('¿Realmente quieres borrar el pedido?');" class="btn btn-outline-danger">Borrar</a>
     </tr>
 	<?php
 	} //Fin foreach usuarios
