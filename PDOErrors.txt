@@ -19,3 +19,8 @@
 20 February, 2020, 1:53 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 20 February, 2020, 1:53 pm SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
 20 February, 2020, 1:54 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM usuarios SET nombre='Gerardo',apellidos='de la Rivera',direccion='Kaer Morh' at line 1
+27 February, 2020, 12:40 pm SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'AAAAAAAAAAAAAAAAAAAAA@AAAAAAAAAAAAAAAAAAAAA.com' for key 'email'
+27 February, 2020, 1:04 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL,NULL' at line 1
+27 February, 2020, 1:04 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL' at line 1
+27 February, 2020, 1:06 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL,NULL' at line 1
+27 February, 2020, 1:40 pm SQLSTATE[21000]: Cardinality violation: 1242 Subquery returns more than 1 row

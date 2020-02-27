@@ -10,6 +10,7 @@
 	  $mensaje = "Carrito vacío";
 	  mostrarMensaje($mensaje);
 	}else{
+		$_SESSION["cantProductos"]=0;
 ?>
 <main role="main">
   <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -43,6 +44,7 @@
 			$precio = $producto["precioOferta"];
 			$subtotal = $precio * $cantidad;
 			$total += $subtotal;
+			$_SESSION["cantProductos"]++;
 		?>
 		<tr>
 		  <td scope="col"><a href="producto.php?idProducto=<?php echo $idProducto; ?>"><?php echo $nombre; ?></a></td>

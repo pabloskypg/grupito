@@ -92,7 +92,8 @@
 		</ul>
 		<ul class="navbar-nav justify-content-end">
 		  <li class="nav-item">
-			<a href="carrito.php" class="nav-link"><i class="fas fa-shopping-cart"></i>(0)</a>
+			<a href="carrito.php" class="nav-link"><i class="fas fa-shopping-cart"></i>
+			(<?php if (isset($_SESSION["cantProductos"])){echo $_SESSION["cantProductos"]; }else{echo "0";} ?>)</a>
 		  </li>
 		  <?php if(isset($_SESSION["usuario"])){ ?>
 		  <li class="nav-item dropdown">

@@ -5,7 +5,7 @@
 <?php require_once("inc/funciones.php"); ?>
 <?php require_once("inc/encabezado.php"); ?>
 <?php 
-if (!isset($_SESSION["carrito"]){
+if (!isset($_SESSION["carrito"])){
 	header("Location:index");
 }else{
 	?>
@@ -31,12 +31,16 @@ if (!isset($_SESSION["carrito"]){
 		$carrito = $_SESSION["carrito"];
 		?>
 	<?php
-		insertarPedido($idUsuario,$carrito,$total);
+		$ok = insertarPedido($idUsuario,$carrito,$total);
+		if ($ok){
 		unset($_SESSION["carrito"]);
 	?>
 		<p><span class="form-control alert-success">Su pedido ha sido realizado correctamente</span></p>
 		<a class="btn btn-primary" href="index.php">Volver</a>
 	<?php
+		}else{
+			<p><span class="form-control alert-danger">Su pedido no se ha podido realizar</span></p>
+		}
 	}
 }
 ?>

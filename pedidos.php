@@ -6,7 +6,7 @@
 <?php require_once("inc/funciones.php"); ?>
 
 <main role="main" class="container">
-    <h1 class="mt-5">Listado de usuarios</h1>
+    <h1 class="mt-5">Listado de pedidos</h1>
 	<?php 
 	$pedidos = seleccionarTodosPedidos();
 	$numPedidos = count($pedidos);
@@ -15,13 +15,13 @@
 	
 	$paginas = ceil($numPedidos/$pedidosPagina);
 	
-	$pagina = recoge("pagina");
-	if (!$pagina || $pagina<=0 || $pagina>$paginas){
-		$pagina = 1;
+	$npagina = recoge("npagina");
+	if (!$npagina || $npagina<=0 || $npagina>$paginas){
+		$npagina = 1;
 	}
 	
-	$inicio = ($pagina-1)*$pedidosPagina; //posicion de inicio en el listado de paginas
-	$usuarios = seleccionarUsuarios($inicio,$pedidosPagina);
+	$inicio = ($npagina-1)*$pedidosPagina; //posicion de inicio en el listado de paginas
+	$pedidos = seleccionarPedidos($inicio,$pedidosPagina);
 	
 	?>
 	<table class="table table-striped">
@@ -59,13 +59,13 @@
 </table>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <li class="page-item <?php if($pagina==1){echo "disabled";} ?>"><a class="page-link" href="pedidos.php?pagina<?php echo $pagina-1; ?>">Anterior</a></li>
+    <li class="page-item <?php if($npagina==1){echo "disabled";} ?>"><a class="page-link" href="pedidos.php?npagina<?php echo $npagina-1; ?>">Anterior</a></li>
     <?php
 	 for ($i=1;$i<=$paginas;$i++){
 	 ?>
-	 <li class="page-item <?php if($pagina==$i){echo "active";} ?>"><a class="page-link" href="pedidos.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+	 <li class="page-item <?php if($npagina==$i){echo "active";} ?>"><a class="page-link" href="pedidos.php?npagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 	 <?php } ?>
-    <li class="page-item <?php if($pagina==$paginas){echo "disabled";} ?>"><a class="page-link" href="pedidos.php?pagina=<?php echo $pagina+1; ?>">Siguiente</a></li>
+    <li class="page-item <?php if($npagina==$paginas){echo "disabled";} ?>"><a class="page-link" href="pedidos.php?npagina=<?php echo $npagina+1; ?>">Siguiente</a></li>
   </ul>
 </nav>
 </main>

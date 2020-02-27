@@ -71,9 +71,9 @@ if (empty($_POST)){
 	$recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response); 
 	$recaptcha = json_decode($recaptcha); 
 
-	if($recaptcha->score <=0.7){
+	/*if($recaptcha->score <=0.7){
 	  $errores = $errores."<li><strong>DETECTADO ROBOT</strong></li>";
-	}
+	}*/
 	
 	if ($nombre == ""){
 		$errores = $errores."<li>Introduce tu nombre</li>";
@@ -99,8 +99,7 @@ if (empty($_POST)){
 		imprimirFormulario($nombre,$apellidos,$email,$direccion,$telefono);
 	}else{
 		insertarUsuario($nombre,$apellidos,$email,$password,$direccion,$telefono);
-		$_SESSION["usuario"]=$nombre;
-		header("Location:index.php");
+		header("Location:login.php");
 	}
 }
 ?>

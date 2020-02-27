@@ -49,7 +49,9 @@ if (empty($_POST)){
 		if (password_verify($password,$usuario['password'])){
 			$_SESSION["usuario"] = $usuario["nombre"];
 			$_SESSION["email"] = $usuario["email"];
-			$_SESSION["admin"] = $usuario["admin"];
+			if ($usuario["admin"]==1){
+				$_SESSION["admin"] = $usuario["admin"];
+			}
 			header("Location:index.php");
 		}else{
 			echo "El usuario o la contraseña son incorrectos";
