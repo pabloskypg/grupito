@@ -14,5 +14,9 @@
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Nuestras ofertas »</a></p>
     </div>
   </div>
+  <div class="container">
+	  <p><b>Email: </b><i>example@mail.com</i></p>
+	  <p><b>Dirección: </b></p>
+  </div>
 </main>
 <?php require_once("inc/pie.php"); ?>

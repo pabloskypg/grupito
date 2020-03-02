@@ -450,4 +450,28 @@ function seleccionarPedidosUsuario($idUsuario,$inicio,$pedidosPagina){
 	}
 	return $rows;
 }
+
+function seleccionarDetallePedido($idPedido){
+	
+	$con = conectarBD();
+	
+	try{
+		$sql = "SELECT * FROM detallepedido WHERE idPedido=:idPedido";
+		
+		$stmt = $con->prepare($sql);
+		
+		$stmt->bindParam(':idPedido',$idPedido, PDO::PARAM_INT);
+		
+		$stmt->execute();
+		
+		$rows = $stmt->fetchALL(PDO::FETCH_ASSOC); 
+		
+	}catch(PDOException $e){
+		echo "Error: Error al seleccionar el pedido".$e->getMessage();
+		
+		file_put_contents("PDOErrors.txt", "\r\n".date('j F, Y, g:i a ').$e->getMessage(), FILE_APPEND);
+		exit;
+	}
+	return $rows;
+}
 ?>

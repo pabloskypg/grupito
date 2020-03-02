@@ -9,6 +9,7 @@
 	if (empty($_SESSION["carrito"])){
 	  $mensaje = "Carrito vacío";
 	  mostrarMensaje($mensaje);
+	  unset($_SESSION["cantProductos"]);
 	}else{
 		$_SESSION["cantProductos"]=0;
 ?>

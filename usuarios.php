@@ -4,6 +4,7 @@
 	  $titulo = "Usuarios"; ?>
 <?php require_once "inc/encabezado.php"; ?>
 <?php require_once "inc/funciones.php"; ?>
+<?php if (!isset($_SESSION["admin"]) or $_SESSION["admin"] != 1){header("Location:index.php");} ?>
 
 <main role="main" class="container">
     <h1 class="mt-5">Listado de usuarios</h1>

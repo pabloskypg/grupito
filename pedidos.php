@@ -4,14 +4,14 @@
 	  $titulo = "Pedidos"; ?>
 <?php require_once("inc/encabezado.php"); ?>
 <?php require_once("inc/funciones.php"); ?>
-
+<?php if (!isset($_SESSION["admin"]) or $_SESSION["admin"] != 1){header("Location:index.php");} ?>
 <main role="main" class="container">
     <h1 class="mt-5">Listado de pedidos</h1>
 	<?php 
 	$pedidos = seleccionarTodosPedidos();
 	$numPedidos = count($pedidos);
 	
-	$pedidosPagina = 2;
+	$pedidosPagina = 3;
 	
 	$paginas = ceil($numPedidos/$pedidosPagina);
 	
@@ -46,7 +46,7 @@
     <tr>
       <th scope="row"><?php echo $idPedido; ?></th>
       <td><?php echo $idUsuario; ?></td>
-      <td><?php echo $total; ?></td>
+      <td><?php echo $total; ?> €</td>
       <td><?php echo $fecha; ?></td>
 	  <td>
 	  <a href="pedido.php?idPedido=<?php echo $idPedido; ?>" class="btn btn-outline-info">Ver Pedido</a>

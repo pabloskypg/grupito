@@ -35,6 +35,7 @@
       <th scope="col">ID usuario</th>
       <th scope="col">Total</th>
       <th scope="col">Fecha</th>
+      <th scope="col">Opciones</th>
 	</tr>
   </thead>
   <tbody>
@@ -51,6 +52,7 @@
       <td><?php echo $idUsuario; ?></td>
       <td><?php echo $total; ?> €</td>
       <td><?php echo $fecha; ?></td>
+	  <td><a href="pedido.php?idPedido=<?php echo $idPedido; ?>" class="btn btn-outline-info">Ver Pedido</a></td>
     </tr>
 	<?php
 	} //Fin foreach usuarios

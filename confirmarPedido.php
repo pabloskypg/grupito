@@ -38,8 +38,9 @@ if (!isset($_SESSION["carrito"])){
 		<p><span class="form-control alert-success">Su pedido ha sido realizado correctamente</span></p>
 		<a class="btn btn-primary" href="index.php">Volver</a>
 	<?php
-		}else{
+		}else{ ?>
 			<p><span class="form-control alert-danger">Su pedido no se ha podido realizar</span></p>
+			<?php
 		}
 	}
 }
