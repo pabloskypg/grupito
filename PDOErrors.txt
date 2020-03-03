@@ -24,3 +24,6 @@
 27 February, 2020, 1:04 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL' at line 1
 27 February, 2020, 1:06 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'NULL,NULL' at line 1
 27 February, 2020, 1:40 pm SQLSTATE[21000]: Cardinality violation: 1242 Subquery returns more than 1 row
+3 March, 2020, 5:38 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE online=1' at line 1
+3 March, 2020, 5:39 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE online=1' at line 1
+3 March, 2020, 5:46 pm SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ORDER BY fecha DESC' at line 1

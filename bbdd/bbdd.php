@@ -29,7 +29,7 @@ function seleccionarOfertasPortada($numOfertas){
 	$con = conectarBD();
 	
 	try{
-		$sql = "SELECT * FROM productos LIMIT :numOfertas";
+		$sql = "SELECT * FROM productos WHERE online=1 LIMIT :numOfertas";
 		
 		$stmt = $con->prepare($sql);
 		
@@ -55,7 +55,7 @@ function seleccionarTodasOfertas(){
 	$con = conectarBD();
 	
 	try{
-		$sql = "SELECT * FROM productos";
+		$sql = "SELECT * FROM productos WHERE online=1";
 		
 		$stmt = $con->prepare($sql);
 		
@@ -379,7 +379,7 @@ function seleccionarPedidos($inicio,$pedidosPagina){
 	$con = conectarBD();
 	
 	try{
-		$sql = "SELECT * FROM pedidos LIMIT :inicio,:pedidosPagina";
+		$sql = "SELECT * FROM pedidos ORDER BY fecha DESC LIMIT :inicio,:pedidosPagina";
 		
 		$stmt = $con->prepare($sql);
 		
@@ -430,7 +430,7 @@ function seleccionarPedidosUsuario($idUsuario,$inicio,$pedidosPagina){
 	$con = conectarBD();
 	
 	try{
-		$sql = "SELECT * FROM pedidos WHERE idUsuario=:idUsuario LIMIT :inicio,:pedidosPagina";
+		$sql = "SELECT * FROM pedidos WHERE idUsuario=:idUsuario ORDER BY fecha DESC LIMIT :inicio,:pedidosPagina";
 		
 		$stmt = $con->prepare($sql);
 		

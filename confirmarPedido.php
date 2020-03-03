@@ -34,6 +34,7 @@ if (!isset($_SESSION["carrito"])){
 		$ok = insertarPedido($idUsuario,$carrito,$total);
 		if ($ok){
 		unset($_SESSION["carrito"]);
+		unset($_SESSION["cantProductos"]);
 	?>
 		<p><span class="form-control alert-success">Su pedido ha sido realizado correctamente</span></p>
 		<a class="btn btn-primary" href="index.php">Volver</a>

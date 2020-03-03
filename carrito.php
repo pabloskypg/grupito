@@ -7,7 +7,7 @@
 
 <?php 
 	if (empty($_SESSION["carrito"])){
-	  $mensaje = "Carrito vacío";
+	  $mensaje = "Tu carrito está vacío";
 	  mostrarMensaje($mensaje);
 	  unset($_SESSION["cantProductos"]);
 	}else{

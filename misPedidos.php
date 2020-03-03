@@ -52,7 +52,9 @@
       <td><?php echo $idUsuario; ?></td>
       <td><?php echo $total; ?> €</td>
       <td><?php echo $fecha; ?></td>
-	  <td><a href="pedido.php?idPedido=<?php echo $idPedido; ?>" class="btn btn-outline-info">Ver Pedido</a></td>
+	  <td><a href="pedido.php?idPedido=<?php echo $idPedido; ?>" class="btn btn-outline-info">Ver Pedido</a><?php
+	  if (isset($_SESSION["admin"]) and $_SESSION["admin"] == 1){?> <a href="borrarPedido.php?idUsuario=<?php echo $idPedido; ?>" onClick="return confirmar('¿Realmente quieres borrar el pedido?');" class="btn btn-outline-danger">Borrar</a><?php }
+	  ?></td>
     </tr>
 	<?php
 	} //Fin foreach usuarios
