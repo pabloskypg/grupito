@@ -18,11 +18,15 @@
   <div class="container">
 	  <form method="post">
 		<div class="form-group">
-		<label for="nombre">Email</label>
-  <input type="text" class="form-control" id="mail" name="email" value="<?php if (isset($_SESSION["email"])){echo $_SESSION["email"]; }?>"/>
+			<label for="nombre">Tu email</label>
+			<input type="text" class="form-control" id="mail" name="email" value="<?php if (isset($_SESSION["email"])){echo $_SESSION["email"]; }?>"/>
 		</div>
 		<div class="form-group">
-		<label for="mensaje">Mensaje</label>
+			<label for="asunto">Asunto</label>
+			<input type="text" class="form-control" id="asunto" name="asunto"/>
+		</div>
+		<div class="form-group">
+		<label for="mensaje">Texto</label>
 			<textarea rows="10" class="form-control" id="mensaje" name="mensaje"></textarea>
 		</div>
 		<p><input type="submit" class="btn btn-primary btn-lg" id="enviar" name="enviar"/></p>
@@ -32,12 +36,14 @@
   }
   if (empty($_POST)){
 	  imprimirFormulario();
-	  if ($_SESSION["contacto"]==true){
-		  echo "<b>El correo ha sido enviado correctamente</b>";
+	  if (isset($_SESSION["contacto"]) and $_SESSION["contacto"]==true){
+		  echo "<div class='container'><b>El correo ha sido enviado correctamente</b></div>";
+		  unset($_SESSION["contacto"]);
 	  }
   }else{
 	  $email = recoge("email");
 	  $mensaje = recoge("mensaje");
+	  $asunto = recoge("asunto");
 	  
 	  $errores = "";
 	  
@@ -54,6 +60,7 @@
 	  }else{
 		$_SESSION["emailContacto"] = $email;
 		$_SESSION["mensaje"] = $mensaje;
+		$_SESSION["asunto"] = $asunto;
 		header("Location:enviarMail.php");
 	  }
   }	  

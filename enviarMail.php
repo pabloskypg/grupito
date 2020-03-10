@@ -4,6 +4,7 @@ require_once("inc/funciones.php");
 
 $email = $_SESSION["emailContacto"];
 $mensaje = $_SESSION["mensaje"];
+$asunto = $_SESSION["asunto"];
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -53,7 +54,7 @@ try {
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Mensaje de cliente';
+    $mail->Subject = $asunto;
     $mail->Body    = $mensaje;
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
